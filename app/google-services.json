@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "543115364889",
+    "firebase_url": "https://thuetro-1efda-default-rtdb.firebaseio.com",
+    "project_id": "thuetro-1efda",
+    "storage_bucket": "thuetro-1efda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543115364889:android:3582d254dd19734ad0f888",
+        "android_client_info": {
+          "package_name": "com.example.nhatro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543115364889-nnfiu1fjeis4ael425790mq002nc92f9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkKoylkrC7giEeK3tF43DD1KquctLnMNw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543115364889-nnfiu1fjeis4ael425790mq002nc92f9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543115364889:android:094cdb24345dd287d0f888",
+        "android_client_info": {
+          "package_name": "com.example.thuetro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543115364889-nnfiu1fjeis4ael425790mq002nc92f9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkKoylkrC7giEeK3tF43DD1KquctLnMNw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543115364889-nnfiu1fjeis4ael425790mq002nc92f9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

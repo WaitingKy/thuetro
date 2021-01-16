@@ -11,10 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Thuetro">
+        <activity android:name=".BrowseActivity"></activity>
+        <activity android:name=".MenuActivity" />
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home"
-            android:theme="@style/Theme.Thuetro.NoActionBar"></activity>
+            android:theme="@style/Theme.Thuetro.NoActionBar" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".MainActivity">

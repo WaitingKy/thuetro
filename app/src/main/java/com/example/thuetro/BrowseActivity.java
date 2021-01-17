@@ -4,9 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.thuetro.MealList.MealList;
 import com.example.thuetro.Model.Meal;
@@ -25,8 +29,8 @@ public class BrowseActivity extends AppCompatActivity {
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();
 
-    private ArrayList<Meal> mealList = new ArrayList<Meal>();
-    private ArrayAdapter<String> adapter = null;
+    private List<Meal> mealList = new ArrayList<Meal>();
+    private ArrayAdapter<Meal> adapter = null;
 
     Meal meal;
     ListView lvMeal;
@@ -37,6 +41,7 @@ public class BrowseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_browse);
 
         init();
+        lvClicked();
     }
 
     public void init() {
@@ -44,15 +49,15 @@ public class BrowseActivity extends AppCompatActivity {
         DatabaseReference getMeal = db.getReference("Meal");
         lvMeal = (ListView) findViewById(R.id.lvMeal);
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+        adapter = new ArrayAdapter<Meal>(this, android.R.layout.simple_list_item_1, mealList);
 
         getMeal.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 adapter.clear();
                 for (DataSnapshot data : snapshot.getChildren()) {
-                    String title = data.getValue().toString();
-                    adapter.add(title);
+                    meal = data.getValue(Meal.class);
+                    mealList.add(meal);
                 }
             }
 
@@ -63,5 +68,18 @@ public class BrowseActivity extends AppCompatActivity {
         });
 
         lvMeal.setAdapter(adapter);
+    }
+
+    public void lvClicked() {
+        lvMeal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DatabaseReference getIngredients = db.getReference("Ingredients");
+                Intent intent = new Intent(BrowseActivity.this, Meal5Activity.class);
+                String key = String.valueOf(position);
+                intent.putExtra("key", key);
+                startActivity(intent);
+            }
+        });
     }
 }

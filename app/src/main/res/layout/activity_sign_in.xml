@@ -23,7 +23,8 @@
             android:textColorHint="@color/white"
             android:textColor="@color/white"
             android:textSize="34sp"
-            android:inputType="phone"/>
+            android:inputType="phone"
+            android:text="090321"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -33,7 +34,8 @@
             android:textColorHint="@color/white"
             android:textColor="@color/white"
             android:textSize="34sp"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:text="321"/>
 
     </LinearLayout>
 

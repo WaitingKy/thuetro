@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Thuetro">
-        <activity android:name=".BrowseActivity"></activity>
+        <activity android:name=".Meal5Activity"></activity>
+        <activity android:name=".BrowseActivity" />
         <activity android:name=".MenuActivity" />
         <activity
             android:name=".Home"

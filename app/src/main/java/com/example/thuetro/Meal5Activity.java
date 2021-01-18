@@ -4,8 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.thuetro.Model.Ingredients;
@@ -16,13 +20,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.ByteArrayOutputStream;
+
 public class Meal5Activity extends AppCompatActivity {
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference getMeal = db.getReference("Meal");
     DatabaseReference getIngredients = db.getReference("Ingredients");
+    DatabaseReference getImage = db.getReference("Image");
 
     CheckBox cbx1, cbx2, cbx3, cbx4, cbx5;
+    ImageView imgMeal;
+    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +39,7 @@ public class Meal5Activity extends AppCompatActivity {
         setContentView(R.layout.activity_meal5);
 
         init();
+        //uploadImage();
     }
 
     public void init() {
@@ -38,6 +48,8 @@ public class Meal5Activity extends AppCompatActivity {
         cbx3 = (CheckBox) findViewById(R.id.cbx3);
         cbx4 = (CheckBox) findViewById(R.id.cbx4);
         cbx5 = (CheckBox) findViewById(R.id.cbx5);
+
+        imgMeal = (ImageView) findViewById(R.id.imgMeal);
 
         Intent intent = getIntent();
         String key = intent.getStringExtra("key");
@@ -60,6 +72,29 @@ public class Meal5Activity extends AppCompatActivity {
 
                 }
             });
+
+            getMeal.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Meal meal = snapshot.child(stringkey).getValue(Meal.class);
+                    byte[] decodedString = Base64.decode(meal.getImage(), Base64.DEFAULT);
+                    Bitmap decodeByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                    imgMeal.setImageBitmap(decodeByte);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         }
+    }
+
+    public void uploadImage() {
+        //ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        //bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        //byte[] byteArray = byteArrayOutputStream.toByteArray();
+        //String imgEncoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+        //getImage.child("00").setValue(imgEncoded);
     }
 }

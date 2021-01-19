@@ -31,6 +31,7 @@ public class Meal5Activity extends AppCompatActivity {
 
     CheckBox cbx1, cbx2, cbx3, cbx4, cbx5;
     ImageView imgMeal;
+    TextView txtContent;
     Bitmap bitmap;
 
     @Override
@@ -39,7 +40,6 @@ public class Meal5Activity extends AppCompatActivity {
         setContentView(R.layout.activity_meal5);
 
         init();
-        //uploadImage();
     }
 
     public void init() {
@@ -50,6 +50,8 @@ public class Meal5Activity extends AppCompatActivity {
         cbx5 = (CheckBox) findViewById(R.id.cbx5);
 
         imgMeal = (ImageView) findViewById(R.id.imgMeal);
+
+        txtContent = (TextView) findViewById(R.id.txtContent);
 
         Intent intent = getIntent();
         String key = intent.getStringExtra("key");
@@ -80,6 +82,7 @@ public class Meal5Activity extends AppCompatActivity {
                     byte[] decodedString = Base64.decode(meal.getImage(), Base64.DEFAULT);
                     Bitmap decodeByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                     imgMeal.setImageBitmap(decodeByte);
+                    txtContent.setText(meal.getContent().replace("_b", "\n"));
                 }
 
                 @Override
@@ -88,13 +91,5 @@ public class Meal5Activity extends AppCompatActivity {
                 }
             });
         }
-    }
-
-    public void uploadImage() {
-        //ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        //bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        //byte[] byteArray = byteArrayOutputStream.toByteArray();
-        //String imgEncoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
-        //getImage.child("00").setValue(imgEncoded);
     }
 }

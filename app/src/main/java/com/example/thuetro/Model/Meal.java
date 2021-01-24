@@ -2,18 +2,18 @@ package com.example.thuetro.Model;
 
 public class Meal {
     private String image;
-    private int igd_num;
     private String title;
     private String content;
+    private String ingredients;
 
     public Meal() {
     }
 
-    public Meal(String image, int igd_num, String title, String content) {
+    public Meal(String image, String title, String content, String ingredients) {
         this.image = image;
-        this.igd_num = igd_num;
         this.title = title;
         this.content = content;
+        this.ingredients = ingredients;
     }
 
     public String getImage() {
@@ -22,14 +22,6 @@ public class Meal {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public int getIgd_num() {
-        return igd_num;
-    }
-
-    public void setIgd_num(int igd_num) {
-        this.igd_num = igd_num;
     }
 
     public String getTitle() {
@@ -46,6 +38,14 @@ public class Meal {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
     }
 
     @Override

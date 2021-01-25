@@ -32,7 +32,6 @@ public class Meal5Activity extends AppCompatActivity {
     CheckBox cbx1, cbx2, cbx3, cbx4, cbx5;
     ImageView imgMeal;
     TextView txtContent;
-    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
